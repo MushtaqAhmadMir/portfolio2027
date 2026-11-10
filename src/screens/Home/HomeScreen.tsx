@@ -225,7 +225,7 @@ export const HomeScreen: React.FC = () => {
             onClick={() => setActiveTab('projects')}
             className={`flex items-center gap-1 text-xs font-semibold cursor-pointer ${isDark ? 'text-purple-400 hover:text-purple-300' : 'text-purple-700 hover:text-purple-900'}`}
           >
-            <span>View All (8)</span>
+            <span>View All ({PROJECTS_DATA.length})</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>

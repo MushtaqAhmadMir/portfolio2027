@@ -103,7 +103,7 @@ export const DeviceChassis: React.FC<DeviceChassisProps> = ({ children }) => {
           deviceMode === 'mobile'
             ? 'w-[420px] h-[870px] max-h-[92vh] rounded-[48px] p-3'
             : deviceMode === 'tablet'
-            ? 'w-[780px] h-[880px] max-h-[92vh] rounded-[36px] p-3.5'
+            ? 'w-[780px] max-w-[96vw] h-[880px] max-h-[92vh] rounded-[36px] p-3.5'
             : 'w-full max-w-5xl h-[880px] max-h-[92vh] rounded-3xl p-3'
         } ${
           isDark

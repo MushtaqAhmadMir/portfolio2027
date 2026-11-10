@@ -42,10 +42,10 @@ export const ProjectsScreen: React.FC = () => {
 
   const categories = [
     { id: 'all', label: 'All Projects', count: PROJECTS_DATA.length },
-    { id: 'iot-hardware', label: 'IoT & Hardware', count: 1 },
-    { id: 'react-native', label: 'React Native', count: 3 },
-    { id: 'flutter', label: 'Flutter', count: 3 },
-    { id: 'enterprise', label: 'Fintech & Enterprise', count: 1 },
+    { id: 'iot-hardware', label: 'IoT & Hardware', count: PROJECTS_DATA.filter((p) => p.category === 'iot-hardware').length },
+    { id: 'react-native', label: 'React Native', count: PROJECTS_DATA.filter((p) => p.category === 'react-native').length },
+    { id: 'flutter', label: 'Flutter', count: PROJECTS_DATA.filter((p) => p.category === 'flutter').length },
+    { id: 'enterprise', label: 'Fintech & Enterprise', count: PROJECTS_DATA.filter((p) => p.category === 'enterprise').length },
   ];
 
   return (
@@ -175,7 +175,7 @@ export const ProjectsScreen: React.FC = () => {
                   <div className={`text-[10px] font-mono font-medium ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
                     {project.role}
                   </div>
-                  <p className={`text-[11px] mt-1 line-clamp-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                  <p className={`text-[11px] mt-1 line-clamp-3 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     {project.tagline}
                   </p>
                 </div>

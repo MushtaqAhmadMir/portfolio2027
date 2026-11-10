@@ -193,135 +193,143 @@ export const ProjectDetailSheet: React.FC<ProjectDetailSheetProps> = ({ project 
         </p>
       </div>
 
-      {/* Problem & Solution Comparison */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      {/* Problem & Solution Comparison (if available) */}
+      {project.problemStatement && project.solution && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div
+            className={`p-4 rounded-2xl border ${
+              isDark ? 'bg-red-950/20 border-red-500/20' : 'bg-red-50/70 border-red-200'
+            }`}
+          >
+            <div className="flex items-center gap-2 mb-2 text-red-500">
+              <AlertCircle className="w-4 h-4" />
+              <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-red-400' : 'text-red-800'}`}>
+                The Problem Statement
+              </h4>
+            </div>
+            <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
+              {project.problemStatement}
+            </p>
+          </div>
+
+          <div
+            className={`p-4 rounded-2xl border ${
+              isDark ? 'bg-emerald-950/20 border-emerald-500/20' : 'bg-emerald-50/70 border-emerald-200'
+            }`}
+          >
+            <div className="flex items-center gap-2 mb-2 text-emerald-500">
+              <CheckCircle2 className="w-4 h-4" />
+              <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-emerald-400' : 'text-emerald-800'}`}>
+                My Engineering Solution
+              </h4>
+            </div>
+            <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
+              {project.solution}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Architecture Deep Dive (if available) */}
+      {project.architecture && (
         <div
-          className={`p-4 rounded-2xl border ${
-            isDark ? 'bg-red-950/20 border-red-500/20' : 'bg-red-50/70 border-red-200'
+          className={`p-5 rounded-2xl border ${
+            isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
           }`}
         >
-          <div className="flex items-center gap-2 mb-2 text-red-500">
-            <AlertCircle className="w-4 h-4" />
-            <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-red-400' : 'text-red-800'}`}>
-              The Problem Statement
-            </h4>
+          <div className="flex items-center gap-2 mb-2 text-indigo-500">
+            <Cpu className="w-4 h-4" />
+            <h3 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-indigo-300' : 'text-indigo-800'}`}>
+              System Architecture: {project.architecture.title}
+            </h3>
           </div>
-          <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
-            {project.problemStatement}
-          </p>
-        </div>
+          <p className={`text-xs mb-4 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{project.architecture.description}</p>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {project.architecture.layers.map((layer, idx) => (
+              <div
+                key={layer.name}
+                className={`p-3 rounded-xl border ${
+                  isDark ? 'bg-slate-900/60 border-white/5' : 'bg-slate-50 border-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold flex items-center justify-center font-mono">
+                    0{idx + 1}
+                  </span>
+                  <span className={`text-xs font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>{layer.name}</span>
+                </div>
+                <p className={`text-[11px] mt-1 pl-7 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {layer.details}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Technical Challenges & Solutions (if available) */}
+      {project.technicalChallenges && project.technicalChallenges.length > 0 && (
         <div
-          className={`p-4 rounded-2xl border ${
-            isDark ? 'bg-emerald-950/20 border-emerald-500/20' : 'bg-emerald-50/70 border-emerald-200'
+          className={`p-5 rounded-2xl border ${
+            isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
           }`}
         >
-          <div className="flex items-center gap-2 mb-2 text-emerald-500">
-            <CheckCircle2 className="w-4 h-4" />
-            <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-emerald-400' : 'text-emerald-800'}`}>
-              My Engineering Solution
-            </h4>
+          <div className="flex items-center gap-2 mb-3 text-amber-500">
+            <Radio className="w-4 h-4" />
+            <h3 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-amber-400' : 'text-amber-700'}`}>
+              Key Technical Challenges & Impact
+            </h3>
           </div>
-          <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
-            {project.solution}
-          </p>
-        </div>
-      </div>
 
-      {/* Architecture Deep Dive */}
-      <div
-        className={`p-5 rounded-2xl border ${
-          isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
-        }`}
-      >
-        <div className="flex items-center gap-2 mb-2 text-indigo-500">
-          <Cpu className="w-4 h-4" />
-          <h3 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-indigo-300' : 'text-indigo-800'}`}>
-            System Architecture: {project.architecture.title}
+          <div className="space-y-3">
+            {project.technicalChallenges.map((item, idx) => (
+              <div
+                key={idx}
+                className={`p-3.5 rounded-xl border space-y-1.5 ${
+                  isDark ? 'bg-slate-900/40 border-white/5' : 'bg-slate-50 border-slate-200'
+                }`}
+              >
+                <div className="text-xs font-semibold text-rose-500 dark:text-rose-300 flex items-start gap-1.5">
+                  <span className="font-mono text-[10px] text-rose-600 dark:text-rose-400 font-bold">CHALLENGE:</span>
+                  <span>{item.challenge}</span>
+                </div>
+                <div className={`text-xs pl-4 border-l-2 border-purple-500/40 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                  <span className={`font-semibold ${isDark ? 'text-purple-300' : 'text-purple-700'}`}>Solution: </span>
+                  <span>{item.solution}</span>
+                </div>
+                <div className="text-[11px] text-emerald-600 dark:text-emerald-400 pl-4 font-mono font-medium flex items-center gap-1">
+                  <CheckCircle2 className="w-3 h-3 flex-shrink-0" />
+                  <span>Impact: {item.impact}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Implementation Details (if available) */}
+      {project.implementationDetails && project.implementationDetails.length > 0 && (
+        <div
+          className={`p-5 rounded-2xl border ${
+            isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
+          }`}
+        >
+          <h3 className={`text-xs font-bold uppercase tracking-wider font-mono mb-3 flex items-center gap-1.5 ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
+            <Layers className="w-3.5 h-3.5" />
+            <span>Implementation Details & Contributions</span>
           </h3>
-        </div>
-        <p className={`text-xs mb-4 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{project.architecture.description}</p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {project.architecture.layers.map((layer, idx) => (
-            <div
-              key={layer.name}
-              className={`p-3 rounded-xl border ${
-                isDark ? 'bg-slate-900/60 border-white/5' : 'bg-slate-50 border-slate-200'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold flex items-center justify-center font-mono">
-                  0{idx + 1}
-                </span>
-                <span className={`text-xs font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>{layer.name}</span>
+          <div className="space-y-2">
+            {project.implementationDetails.map((detail, idx) => (
+              <div key={idx} className="flex items-start gap-2.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-purple-500 flex-shrink-0 mt-0.5" />
+                <span className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{detail}</span>
               </div>
-              <p className={`text-[11px] mt-1 pl-7 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                {layer.details}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Technical Challenges & Solutions */}
-      <div
-        className={`p-5 rounded-2xl border ${
-          isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
-        }`}
-      >
-        <div className="flex items-center gap-2 mb-3 text-amber-500">
-          <Radio className="w-4 h-4" />
-          <h3 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-amber-400' : 'text-amber-700'}`}>
-            Key Technical Challenges & Impact
-          </h3>
-        </div>
-
-        <div className="space-y-3">
-          {project.technicalChallenges.map((item, idx) => (
-            <div
-              key={idx}
-              className={`p-3.5 rounded-xl border space-y-1.5 ${
-                isDark ? 'bg-slate-900/40 border-white/5' : 'bg-slate-50 border-slate-200'
-              }`}
-            >
-              <div className="text-xs font-semibold text-rose-500 dark:text-rose-300 flex items-start gap-1.5">
-                <span className="font-mono text-[10px] text-rose-600 dark:text-rose-400 font-bold">CHALLENGE:</span>
-                <span>{item.challenge}</span>
-              </div>
-              <div className={`text-xs pl-4 border-l-2 border-purple-500/40 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-                <span className={`font-semibold ${isDark ? 'text-purple-300' : 'text-purple-700'}`}>Solution: </span>
-                <span>{item.solution}</span>
-              </div>
-              <div className="text-[11px] text-emerald-600 dark:text-emerald-400 pl-4 font-mono font-medium flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3 flex-shrink-0" />
-                <span>Impact: {item.impact}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Implementation Details */}
-      <div
-        className={`p-5 rounded-2xl border ${
-          isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
-        }`}
-      >
-        <h3 className={`text-xs font-bold uppercase tracking-wider font-mono mb-3 flex items-center gap-1.5 ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
-          <Layers className="w-3.5 h-3.5" />
-          <span>Implementation Details & Contributions</span>
-        </h3>
-
-        <div className="space-y-2">
-          {project.implementationDetails.map((detail, idx) => (
-            <div key={idx} className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-purple-500 flex-shrink-0 mt-0.5" />
-              <span className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{detail}</span>
-            </div>
-          ))}
-        </div>
-      </div>
+      )}
 
       {/* Technology Stack Tags */}
       <div
@@ -348,21 +356,23 @@ export const ProjectDetailSheet: React.FC<ProjectDetailSheetProps> = ({ project 
         </div>
       </div>
 
-      {/* Key Learnings */}
-      <div
-        className={`p-4 rounded-2xl border ${
-          isDark ? 'bg-[#101422]/60 border-white/5' : 'bg-white border-slate-200'
-        }`}
-      >
-        <span className={`text-[10px] font-bold uppercase tracking-wider font-mono block mb-2 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-          Key Engineering Learnings
-        </span>
-        <ul className={`space-y-1.5 list-disc list-inside text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-          {project.keyLearnings.map((learning, idx) => (
-            <li key={idx}>{learning}</li>
-          ))}
-        </ul>
-      </div>
+      {/* Key Learnings (if available) */}
+      {project.keyLearnings && project.keyLearnings.length > 0 && (
+        <div
+          className={`p-4 rounded-2xl border ${
+            isDark ? 'bg-[#101422]/60 border-white/5' : 'bg-white border-slate-200'
+          }`}
+        >
+          <span className={`text-[10px] font-bold uppercase tracking-wider font-mono block mb-2 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+            Key Engineering Learnings
+          </span>
+          <ul className={`space-y-1.5 list-disc list-inside text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+            {project.keyLearnings.map((learning, idx) => (
+              <li key={idx}>{learning}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Bottom Back Button */}
       <div className="pt-2 text-center">

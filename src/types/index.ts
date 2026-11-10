@@ -15,21 +15,21 @@ export interface Project {
   period: string;
   company?: string;
   overview: string;
-  problemStatement: string;
-  solution: string;
-  architecture: {
+  problemStatement?: string;
+  solution?: string;
+  architecture?: {
     title: string;
     description: string;
     layers: { name: string; details: string }[];
   };
-  technicalChallenges: {
+  technicalChallenges?: {
     challenge: string;
     solution: string;
     impact: string;
   }[];
-  implementationDetails: string[];
+  implementationDetails?: string[];
   technologies: string[];
-  keyLearnings: string[];
+  keyLearnings?: string[];
   links?: {
     playStore?: string;
     appStore?: string;
@@ -46,10 +46,10 @@ export interface Experience {
   period: string;
   location: string;
   employmentType: string;
-  summary: string;
+  summary?: string;
   bullets: string[];
   stack: string[];
-  achievements: string[];
+  achievements?: string[];
 }
 
 export interface SkillItem {

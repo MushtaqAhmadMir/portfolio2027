@@ -58,7 +58,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return 'ios';
   });
 
-  const [deviceMode, setDeviceModeState] = useState<DeviceMode>('mobile');
+  const [deviceMode, setDeviceModeState] = useState<DeviceMode>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('mm_device_mode');
+      if (saved === 'mobile' || saved === 'tablet' || saved === 'desktop') return saved;
+    }
+    return 'tablet';
+  });
 
   const [theme, setThemeState] = useState<ThemeMode>(() => {
     if (typeof window !== 'undefined') {
@@ -104,6 +110,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const setDeviceMode = (d: DeviceMode) => {
     if (soundEnabled) playUiSound('tap');
     setDeviceModeState(d);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('mm_device_mode', d);
+    }
   };
 
   const setTheme = (t: ThemeMode) => {

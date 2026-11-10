@@ -14,7 +14,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'about', label: 'About', icon: User },
-  { id: 'projects', label: 'Projects', icon: Layers, badge: '8' },
+  { id: 'projects', label: 'Projects', icon: Layers, badge: '12' },
   { id: 'experience', label: 'Timeline', icon: Briefcase },
   { id: 'skills', label: 'Skills', icon: Code },
   { id: 'more', label: 'More', icon: Menu },

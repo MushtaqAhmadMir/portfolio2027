@@ -100,13 +100,15 @@ export const ExperienceScreen: React.FC = () => {
                 </div>
               </div>
 
-              {/* Summary */}
-              <p className={`text-xs leading-relaxed mb-3 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-                {exp.summary}
-              </p>
+              {/* Summary (if present) */}
+              {exp.summary && (
+                <p className={`text-xs leading-relaxed mb-3 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
+                  {exp.summary}
+                </p>
+              )}
 
-              {/* Key Achievements Badges */}
-              {exp.achievements.length > 0 && (
+              {/* Key Achievements Badges (if present) */}
+              {exp.achievements && exp.achievements.length > 0 && (
                 <div className={`mb-3 p-2.5 rounded-xl space-y-1 border ${isDark ? 'bg-purple-950/25 border-purple-500/20' : 'bg-purple-50 border-purple-200'}`}>
                   <span className={`text-[10px] font-mono font-bold uppercase flex items-center gap-1 ${isDark ? 'text-purple-300' : 'text-purple-800'}`}>
                     <Award className="w-3 h-3" />
