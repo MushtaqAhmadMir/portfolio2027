@@ -46,11 +46,11 @@ export const SkillsScreen: React.FC = () => {
     <div className="flex-1 w-full p-4 sm:p-5 space-y-5 pb-6">
       {/* Header */}
       <div>
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+        <h2 className={`text-lg font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
           <Code className="w-4 h-4 text-purple-400" />
           <span>Technical Skills & Capabilities Dashboard</span>
         </h2>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className={`text-xs mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600 font-medium'}`}>
           Curated competencies evaluated by production battle-testing, architecture impact, and hardware bridges.
         </p>
       </div>
@@ -87,11 +87,11 @@ export const SkillsScreen: React.FC = () => {
           <div key={category.id} className="space-y-3">
             <div className="flex items-center justify-between px-1">
               <div>
-                <h3 className="text-sm font-bold text-white tracking-tight flex items-center gap-2">
+                <h3 className={`text-sm font-bold tracking-tight flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
                   <span>{category.title}</span>
                 </h3>
-                <p className="text-[11px] text-slate-400 mt-0.5">
+                <p className={`text-[11px] mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   {category.description}
                 </p>
               </div>
@@ -113,10 +113,10 @@ export const SkillsScreen: React.FC = () => {
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <div>
-                      <h4 className="text-xs font-bold text-white tracking-tight">
+                      <h4 className={`text-xs font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                         {skill.name}
                       </h4>
-                      <span className="text-[10px] text-purple-400 font-mono">
+                      <span className="text-[10px] text-purple-400 font-mono font-semibold">
                         {skill.experienceYears}
                       </span>
                     </div>
@@ -124,10 +124,16 @@ export const SkillsScreen: React.FC = () => {
                     <span
                       className={`px-2 py-0.5 rounded-full text-[9px] font-mono font-bold uppercase tracking-wider ${
                         skill.level === 'Expert'
-                          ? 'bg-purple-500/15 text-purple-300 border border-purple-500/30'
+                          ? isDark
+                            ? 'bg-purple-500/15 text-purple-300 border border-purple-500/30'
+                            : 'bg-purple-100 text-purple-800 border border-purple-200'
                           : skill.level === 'Advanced'
-                          ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30'
-                          : 'bg-slate-700/40 text-slate-300 border border-slate-600/30'
+                          ? isDark
+                            ? 'bg-indigo-500/15 text-indigo-300 border border-indigo-500/30'
+                            : 'bg-indigo-100 text-indigo-800 border border-indigo-200'
+                          : isDark
+                          ? 'bg-slate-700/40 text-slate-300 border border-slate-600/30'
+                          : 'bg-slate-100 text-slate-700 border border-slate-300'
                       }`}
                     >
                       {skill.level}
@@ -135,16 +141,20 @@ export const SkillsScreen: React.FC = () => {
                   </div>
 
                   {/* Highlight */}
-                  <p className="text-[11px] text-slate-300 leading-relaxed mb-3">
+                  <p className={`text-[11px] leading-relaxed mb-3 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     {skill.highlight}
                   </p>
 
                   {/* Sub tags */}
-                  <div className="flex flex-wrap gap-1 pt-2 border-t border-white/5">
+                  <div className={`flex flex-wrap gap-1 pt-2 border-t ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
                     {skill.tags.map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 rounded-md text-[9px] font-mono bg-slate-800/60 text-slate-300 border border-white/5"
+                        className={`px-2 py-0.5 rounded-md text-[9px] font-mono border ${
+                          isDark
+                            ? 'bg-slate-800/60 text-slate-300 border-white/5'
+                            : 'bg-slate-100 text-slate-700 border-slate-200'
+                        }`}
                       >
                         {t}
                       </span>

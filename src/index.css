@@ -13,6 +13,17 @@
     -webkit-tap-highlight-color: transparent;
     user-select: none;
     -webkit-user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.light body {
+    background-color: #f1f5f9;
+    color: #0f172a;
+  }
+
+  html.dark body {
+    background-color: #07090e;
+    color: #f8fafc;
   }
 
   /* Allow text selection in code snippets and descriptions */

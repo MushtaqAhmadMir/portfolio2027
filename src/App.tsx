@@ -12,7 +12,8 @@ import { SkillsScreen } from './screens/Skills/SkillsScreen';
 import { MoreScreen } from './screens/More/MoreScreen';
 
 const MainAppContent: React.FC = () => {
-  const { activeTab, platform } = useApp();
+  const { activeTab, platform, theme } = useApp();
+  const isDark = theme === 'dark';
 
   const renderActiveScreen = () => {
     switch (activeTab) {
@@ -35,7 +36,9 @@ const MainAppContent: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen w-full flex flex-col bg-[#07090e] ${
+      className={`min-h-screen w-full flex flex-col transition-colors duration-300 ${
+        isDark ? 'bg-[#07090e] text-slate-100' : 'bg-slate-100 text-slate-900'
+      } ${
         platform === 'android' ? 'font-android' : 'font-ios'
       }`}
     >

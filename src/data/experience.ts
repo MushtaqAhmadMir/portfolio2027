@@ -105,32 +105,4 @@ export const EXPERIENCES_DATA: Experience[] = [
       'Standardized mobile code review standards and reusable UI component primitives across the company.',
     ],
   },
-  {
-    id: 'independent-consultant',
-    company: 'Independent Mobile Solutions Engineer',
-    role: 'Mobile Consultant & Full-Stack App Engineer',
-    period: '2019 — 2021',
-    location: 'India',
-    employmentType: 'Contract / Independent',
-    summary:
-      'Partnered with startups and regional businesses to design, prototype, and build bespoke mobile applications, integrating payment gateways, interactive maps, and responsive user interfaces.',
-    bullets: [
-      'Delivered end-to-end mobile applications for early-stage ventures in tourism, booking systems, and media streaming.',
-      'Architected cross-platform mobile solutions from concept to wireframes, interactive prototypes, and production deployment.',
-      'Consulted on mobile app architecture, state management patterns (BLoC, Provider, Redux), and performance tuning.',
-    ],
-    stack: [
-      'Flutter',
-      'React Native',
-      'Firebase',
-      'Node.js',
-      'REST APIs',
-      'Stripe / Razorpay',
-      'Git',
-    ],
-    achievements: [
-      'Helped 3 startups launch their MVP mobile applications to positive user reception.',
-      'Built foundation of deep cross-platform proficiency bridging Android and iOS ecosystems.',
-    ],
-  },
 ];

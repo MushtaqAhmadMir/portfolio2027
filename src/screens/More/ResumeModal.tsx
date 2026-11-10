@@ -35,14 +35,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           }`}
         >
           {/* Header */}
-          <div className="px-5 py-3.5 border-b border-white/10 flex items-center justify-between">
+          <div className={`px-5 py-3.5 border-b flex items-center justify-between ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
             <div className="flex items-center gap-2">
               <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400">
                 <FileText className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white">Mushtaq Ahmad Mir — Curriculum Vitae</h3>
-                <p className="text-[10px] text-purple-300 font-mono">PDF Document • 6+ Years Mobile Engineering</p>
+                <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Mushtaq Ahmad Mir — Curriculum Vitae</h3>
+                <p className={`text-[10px] font-mono ${isDark ? 'text-purple-300' : 'text-purple-700 font-semibold'}`}>PDF Document • 6+ Years Mobile Engineering</p>
               </div>
             </div>
 
@@ -60,7 +60,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <button
                 type="button"
                 onClick={onClose}
-                className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
+                  isDark ? 'text-slate-400 hover:text-white hover:bg-white/10' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+                }`}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -70,18 +72,26 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
           {/* Embedded Viewer / Executive Snapshot */}
           <div className="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4">
             {/* Header Card */}
-            <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-950/40 via-indigo-950/30 to-slate-900 border border-purple-500/30 flex items-center justify-between">
+            <div className={`p-4 rounded-2xl border flex items-center justify-between ${
+              isDark
+                ? 'bg-gradient-to-r from-purple-950/40 via-indigo-950/30 to-slate-900 border-purple-500/30'
+                : 'bg-gradient-to-r from-purple-50 via-indigo-50 to-white border-purple-200'
+            }`}>
               <div>
-                <h4 className="text-base font-bold text-white">{PROFILE_DATA.name}</h4>
-                <p className="text-xs text-purple-300">{PROFILE_DATA.role}</p>
-                <p className="text-[11px] text-slate-400 mt-1">{PROFILE_DATA.contact.email} • Bangalore, India</p>
+                <h4 className={`text-base font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{PROFILE_DATA.name}</h4>
+                <p className={`text-xs ${isDark ? 'text-purple-300' : 'text-purple-700 font-medium'}`}>{PROFILE_DATA.role}</p>
+                <p className={`text-[11px] mt-1 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{PROFILE_DATA.contact.email} • Bangalore, India</p>
               </div>
 
               <a
                 href={PROFILE_DATA.resumeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3 py-1.5 rounded-xl text-xs font-medium bg-white/10 hover:bg-white/15 text-white border border-white/15 flex items-center gap-1 transition-colors"
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1 transition-colors ${
+                  isDark
+                    ? 'bg-white/10 hover:bg-white/15 text-white border border-white/15'
+                    : 'bg-purple-600 hover:bg-purple-700 text-white shadow-sm'
+                }`}
               >
                 <span>Open in Tab</span>
                 <ExternalLink className="w-3 h-3" />
@@ -93,7 +103,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <span className="text-[10px] font-mono font-bold text-purple-400 uppercase tracking-wider">
                 Summary of Qualifications
               </span>
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                 Senior Mobile Engineer with 6+ years of expertise in architecting and delivering high-performance cross-platform (React Native, Flutter) and native Android applications. Proven track record building hardware-integrated systems with 360° action cameras (Insta360 X4), BLE 5.0 GATT protocols, Wi-Fi Direct, and secure banking-grade applications for Kotak Mahindra Bank and enterprise logistics.
               </p>
             </div>
@@ -106,13 +116,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </span>
 
               {EXPERIENCES_DATA.map((exp) => (
-                <div key={exp.id} className="p-3 rounded-xl bg-slate-900/50 border border-white/5 space-y-1">
+                <div key={exp.id} className={`p-3 rounded-xl space-y-1 border ${isDark ? 'bg-slate-900/50 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-white">{exp.role}</span>
+                    <span className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{exp.role}</span>
                     <span className="text-[10px] font-mono text-purple-400">{exp.period}</span>
                   </div>
-                  <div className="text-[11px] text-slate-300 font-medium">{exp.company} — {exp.location}</div>
-                  <p className="text-[11px] text-slate-400 leading-relaxed">{exp.summary}</p>
+                  <div className={`text-[11px] font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>{exp.company} — {exp.location}</div>
+                  <p className={`text-[11px] leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{exp.summary}</p>
                 </div>
               ))}
             </div>
@@ -124,13 +134,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <span>Education</span>
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                <div className="p-3 rounded-xl bg-slate-900/50 border border-white/5">
-                  <span className="text-xs font-bold text-white block">Master of Computer Applications</span>
-                  <span className="text-[11px] text-slate-300">Lovely Professional University (2019–2021)</span>
+                <div className={`p-3 rounded-xl border ${isDark ? 'bg-slate-900/50 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
+                  <span className={`text-xs font-bold block ${isDark ? 'text-white' : 'text-slate-900'}`}>Master of Computer Applications</span>
+                  <span className={`text-[11px] ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>Lovely Professional University (2019–2021)</span>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900/50 border border-white/5">
-                  <span className="text-xs font-bold text-white block">Bachelor of Computer Applications</span>
-                  <span className="text-[11px] text-slate-300">Punjabi University (2016–2019)</span>
+                <div className={`p-3 rounded-xl border ${isDark ? 'bg-slate-900/50 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
+                  <span className={`text-xs font-bold block ${isDark ? 'text-white' : 'text-slate-900'}`}>Bachelor of Computer Applications</span>
+                  <span className={`text-[11px] ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>Punjabi University (2016–2019)</span>
                 </div>
               </div>
             </div>

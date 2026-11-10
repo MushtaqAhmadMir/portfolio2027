@@ -76,21 +76,23 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
           }`}
         >
           {/* Header */}
-          <div className="px-5 py-4 border-b border-white/10 flex items-center justify-between">
+          <div className={`px-5 py-4 border-b flex items-center justify-between ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
             <div className="flex items-center gap-2">
               <div className="p-2 rounded-xl bg-purple-500/20 text-purple-400">
                 <Mail className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-white">Get in Touch with Mushtaq</h3>
-                <p className="text-[10px] text-slate-400">Available for Senior Mobile App Roles & Consulting</p>
+                <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Get in Touch with Mushtaq</h3>
+                <p className={`text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>Available for Senior Mobile App Roles & Consulting</p>
               </div>
             </div>
 
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
+                isDark ? 'text-slate-400 hover:text-white hover:bg-white/10' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+              }`}
             >
               <X className="w-4 h-4" />
             </button>
@@ -103,13 +105,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center justify-between p-3 rounded-xl bg-purple-950/30 border border-purple-500/30 hover:border-purple-500/60 transition-colors cursor-pointer text-left"
+                className={`flex items-center justify-between p-3 rounded-xl border transition-colors cursor-pointer text-left ${
+                  isDark
+                    ? 'bg-purple-950/30 border-purple-500/30 hover:border-purple-500/60'
+                    : 'bg-purple-50 border-purple-200 hover:border-purple-300'
+                }`}
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <Mail className="w-4 h-4 text-purple-400 flex-shrink-0" />
                   <div className="truncate">
-                    <span className="text-[10px] text-slate-400 block font-mono">Email Address</span>
-                    <span className="text-xs font-semibold text-purple-200 truncate block">
+                    <span className={`text-[10px] block font-mono ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>Email Address</span>
+                    <span className={`text-xs font-semibold truncate block ${isDark ? 'text-purple-200' : 'text-purple-900'}`}>
                       {PROFILE_DATA.contact.email}
                     </span>
                   </div>
@@ -121,13 +127,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 href={PROFILE_DATA.contact.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-between p-3 rounded-xl bg-blue-950/30 border border-blue-500/30 hover:border-blue-500/60 transition-colors cursor-pointer text-left"
+                className={`flex items-center justify-between p-3 rounded-xl border transition-colors cursor-pointer text-left ${
+                  isDark
+                    ? 'bg-blue-950/30 border-blue-500/30 hover:border-blue-500/60'
+                    : 'bg-blue-50 border-blue-200 hover:border-blue-300'
+                }`}
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <LinkedinIcon className="w-4 h-4 text-blue-400 flex-shrink-0" />
                   <div className="truncate">
-                    <span className="text-[10px] text-slate-400 block font-mono">Professional Profile</span>
-                    <span className="text-xs font-semibold text-blue-200 truncate block">
+                    <span className={`text-[10px] block font-mono ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>Professional Profile</span>
+                    <span className={`text-xs font-semibold truncate block ${isDark ? 'text-blue-200' : 'text-blue-900'}`}>
                       linkedin.com/in/mushtaqahmadmir
                     </span>
                   </div>
@@ -136,10 +146,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             </div>
 
             {/* Direct Message Form */}
-            <form onSubmit={handleSubmit} className="space-y-3 pt-2 border-t border-white/5">
+            <form onSubmit={handleSubmit} className={`space-y-3 pt-2 border-t ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="text-[11px] font-medium text-slate-300 block mb-1">
+                  <label className={`text-[11px] font-medium block mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Your Name *
                   </label>
                   <input
@@ -157,7 +167,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 </div>
 
                 <div>
-                  <label className="text-[11px] font-medium text-slate-300 block mb-1">
+                  <label className={`text-[11px] font-medium block mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     Your Email *
                   </label>
                   <input
@@ -176,7 +186,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               <div>
-                <label className="text-[11px] font-medium text-slate-300 block mb-1">
+                <label className={`text-[11px] font-medium block mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   Subject
                 </label>
                 <input
@@ -193,7 +203,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               <div>
-                <label className="text-[11px] font-medium text-slate-300 block mb-1">
+                <label className={`text-[11px] font-medium block mb-1 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   Message *
                 </label>
                 <textarea
@@ -211,7 +221,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               </div>
 
               <div className="pt-2 flex items-center justify-between">
-                <span className="text-[10px] text-slate-400 flex items-center gap-1">
+                <span className={`text-[10px] flex items-center gap-1 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   <CheckCircle2 className="w-3 h-3 text-emerald-400" />
                   <span>Prompt Response Guaranteed</span>
                 </span>

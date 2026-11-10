@@ -65,10 +65,10 @@ export const BottomNav: React.FC = () => {
                   <Icon
                     className={`w-5 h-5 relative z-10 transition-colors ${
                       isActive
-                        ? 'text-purple-400 stroke-[2.2]'
+                        ? isDark ? 'text-purple-400 stroke-[2.2]' : 'text-purple-600 stroke-[2.2]'
                         : isDark
                         ? 'text-slate-400 group-hover:text-slate-200'
-                        : 'text-slate-500 group-hover:text-slate-700'
+                        : 'text-slate-600 group-hover:text-slate-900'
                     }`}
                   />
                   {item.badge && (
@@ -81,10 +81,10 @@ export const BottomNav: React.FC = () => {
                 <span
                   className={`text-[10px] mt-1 font-android tracking-tight transition-colors ${
                     isActive
-                      ? 'text-purple-400 font-bold'
+                      ? isDark ? 'text-purple-400 font-bold' : 'text-purple-600 font-bold'
                       : isDark
                       ? 'text-slate-400'
-                      : 'text-slate-500'
+                      : 'text-slate-600 font-medium'
                   }`}
                 >
                   {item.label}
@@ -112,10 +112,10 @@ export const BottomNav: React.FC = () => {
                   <Icon
                     className={`w-5 h-5 transition-transform duration-200 ${
                       isActive
-                        ? 'text-purple-500 stroke-[2.4] scale-110 drop-shadow-[0_2px_8px_rgba(168,85,247,0.4)]'
+                        ? isDark ? 'text-purple-400 stroke-[2.4] scale-110 drop-shadow-[0_2px_8px_rgba(168,85,247,0.4)]' : 'text-purple-600 stroke-[2.4] scale-110'
                         : isDark
                         ? 'text-slate-400 group-hover:text-slate-200'
-                        : 'text-slate-400 group-hover:text-slate-600'
+                        : 'text-slate-500 group-hover:text-slate-800'
                     }`}
                   />
                   {item.badge && (
@@ -128,10 +128,10 @@ export const BottomNav: React.FC = () => {
                 <span
                   className={`text-[9.5px] mt-0.5 font-ios font-medium tracking-tight transition-colors ${
                     isActive
-                      ? 'text-purple-400 font-semibold'
+                      ? isDark ? 'text-purple-400 font-semibold' : 'text-purple-600 font-bold'
                       : isDark
                       ? 'text-slate-400'
-                      : 'text-slate-400'
+                      : 'text-slate-600 font-medium'
                   }`}
                 >
                   {item.label}

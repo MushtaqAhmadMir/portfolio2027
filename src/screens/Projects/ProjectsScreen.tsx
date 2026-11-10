@@ -53,11 +53,11 @@ export const ProjectsScreen: React.FC = () => {
       {/* Header Info */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h2 className="text-lg font-bold text-white flex items-center gap-2">
-            <Layers className="w-4 h-4 text-purple-400" />
+          <h2 className={`text-lg font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            <Layers className="w-4 h-4 text-purple-500" />
             <span>Featured Mobile Engineering Showcase</span>
           </h2>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className={`text-xs mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
             Production apps shipped across IoT camera controls, fintech banking, and logistics.
           </p>
         </div>
@@ -172,26 +172,30 @@ export const ProjectsScreen: React.FC = () => {
               {/* Description & Role */}
               <div className="p-3.5 space-y-2.5 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="text-[10px] font-mono text-purple-400 font-medium">
+                  <div className={`text-[10px] font-mono font-medium ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
                     {project.role}
                   </div>
-                  <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+                  <p className={`text-[11px] mt-1 line-clamp-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     {project.tagline}
                   </p>
                 </div>
 
                 {/* Technologies Chips */}
-                <div className="flex flex-wrap gap-1 pt-1 border-t border-white/5">
+                <div className={`flex flex-wrap gap-1 pt-1 border-t ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
                   {project.technologies.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 rounded-md text-[9.5px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                      className={`px-2 py-0.5 rounded-md text-[9.5px] font-mono border ${
+                        isDark
+                          ? 'bg-purple-500/10 text-purple-300 border-purple-500/20'
+                          : 'bg-purple-50 text-purple-800 border-purple-200'
+                      }`}
                     >
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 4 && (
-                    <span className="px-1.5 py-0.5 rounded-md text-[9px] font-mono text-slate-400">
+                    <span className={`px-1.5 py-0.5 rounded-md text-[9px] font-mono ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                       +{project.technologies.length - 4}
                     </span>
                   )}

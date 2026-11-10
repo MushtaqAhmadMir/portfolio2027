@@ -49,21 +49,25 @@ export const AboutScreen: React.FC = () => {
           />
 
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-white">{PROFILE_DATA.name}</h2>
-            <p className="text-xs font-semibold text-purple-400 mt-0.5">
+            <h2 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{PROFILE_DATA.name}</h2>
+            <p className={`text-xs font-semibold mt-0.5 ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
               {PROFILE_DATA.role}
             </p>
-            <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+            <p className={`text-xs mt-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               {PROFILE_DATA.about.intro}
             </p>
 
             {/* Social Links Row */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-4 pt-3 border-t border-white/10">
+            <div className={`flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-4 pt-3 border-t ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
               <a
                 href={PROFILE_DATA.contact.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-[#0a66c2]/20 border border-[#0a66c2]/40 text-blue-300 hover:bg-[#0a66c2]/30 transition-colors"
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
+                  isDark
+                    ? 'bg-[#0a66c2]/20 border-[#0a66c2]/40 text-blue-300 hover:bg-[#0a66c2]/30'
+                    : 'bg-blue-50 border-blue-200 text-blue-800 hover:bg-blue-100'
+                }`}
               >
                 <LinkedinIcon className="w-3.5 h-3.5" />
                 <span>LinkedIn</span>
@@ -74,7 +78,11 @@ export const AboutScreen: React.FC = () => {
                 href={PROFILE_DATA.contact.github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 border border-white/15 text-slate-200 hover:bg-white/10 transition-colors"
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors ${
+                  isDark
+                    ? 'bg-white/5 border-white/15 text-slate-200 hover:bg-white/10'
+                    : 'bg-slate-100 border-slate-300 text-slate-800 hover:bg-slate-200'
+                }`}
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -84,7 +92,11 @@ export const AboutScreen: React.FC = () => {
               <button
                 type="button"
                 onClick={copyEmail}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-purple-500/15 border border-purple-500/30 text-purple-300 hover:bg-purple-500/25 transition-colors cursor-pointer"
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors cursor-pointer ${
+                  isDark
+                    ? 'bg-purple-500/15 border-purple-500/30 text-purple-300 hover:bg-purple-500/25'
+                    : 'bg-purple-50 border-purple-200 text-purple-800 hover:bg-purple-100'
+                }`}
               >
                 <Mail className="w-3.5 h-3.5" />
                 <span>{PROFILE_DATA.contact.email}</span>
@@ -101,13 +113,13 @@ export const AboutScreen: React.FC = () => {
           isDark ? 'bg-[#101422]/70 border-white/5' : 'bg-white border-slate-200'
         }`}
       >
-        <div className="flex items-center gap-2 mb-2 text-purple-400">
+        <div className="flex items-center gap-2 mb-2 text-purple-500">
           <Terminal className="w-4 h-4" />
-          <h3 className="text-xs font-bold uppercase tracking-wider font-mono">
+          <h3 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
             The Developer Journey
           </h3>
         </div>
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
           {PROFILE_DATA.about.journey}
         </p>
       </div>
@@ -115,8 +127,8 @@ export const AboutScreen: React.FC = () => {
       {/* 6 Core Competencies Grid */}
       <div>
         <div className="mb-3 px-1">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 font-mono flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+          <h3 className={`text-xs font-bold uppercase tracking-wider font-mono flex items-center gap-1.5 ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
+            <Sparkles className="w-3.5 h-3.5 text-purple-500" />
             <span>Technical Pillars & Native Specializations</span>
           </h3>
         </div>
@@ -143,14 +155,14 @@ export const AboutScreen: React.FC = () => {
                 }`}
               >
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="p-2 rounded-xl bg-purple-500/15 border border-purple-500/25 text-purple-400">
+                  <div className="p-2 rounded-xl bg-purple-500/15 border border-purple-500/25 text-purple-500">
                     <IconComponent className="w-4 h-4" />
                   </div>
-                  <h4 className="text-xs font-bold text-white tracking-tight">
+                  <h4 className={`text-xs font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                     {cap.title}
                   </h4>
                 </div>
-                <p className="text-[11px] text-slate-300 leading-relaxed">
+                <p className={`text-[11px] leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   {cap.desc}
                 </p>
               </motion.div>
@@ -166,10 +178,10 @@ export const AboutScreen: React.FC = () => {
             isDark ? 'bg-[#101422]/60 border-white/5' : 'bg-white border-slate-200'
           }`}
         >
-          <h4 className="text-xs font-bold text-purple-300 uppercase tracking-wider font-mono mb-2">
+          <h4 className={`text-xs font-bold uppercase tracking-wider font-mono mb-2 ${isDark ? 'text-purple-300' : 'text-purple-800'}`}>
             Technical Philosophy
           </h4>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
             {PROFILE_DATA.about.philosophy}
           </p>
         </div>
@@ -179,10 +191,10 @@ export const AboutScreen: React.FC = () => {
             isDark ? 'bg-[#101422]/60 border-white/5' : 'bg-white border-slate-200'
           }`}
         >
-          <h4 className="text-xs font-bold text-indigo-300 uppercase tracking-wider font-mono mb-2">
+          <h4 className={`text-xs font-bold uppercase tracking-wider font-mono mb-2 ${isDark ? 'text-indigo-300' : 'text-indigo-800'}`}>
             Problem-Solving Approach
           </h4>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className={`text-xs leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
             {PROFILE_DATA.about.problemSolving}
           </p>
         </div>
@@ -194,7 +206,7 @@ export const AboutScreen: React.FC = () => {
           isDark ? 'bg-[#101422]/60 border-white/5' : 'bg-white border-slate-200'
         }`}
       >
-        <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono mb-3 flex items-center gap-2">
+        <h4 className={`text-xs font-bold uppercase tracking-wider font-mono mb-3 flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
           <Heart className="w-3.5 h-3.5 text-pink-500" />
           <span>What I Enjoy Building</span>
         </h4>
@@ -202,8 +214,8 @@ export const AboutScreen: React.FC = () => {
         <div className="space-y-2">
           {PROFILE_DATA.about.whatIBuild.map((item) => (
             <div key={item} className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-              <span className="text-xs text-slate-200">{item}</span>
+              <CheckCircle2 className="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" />
+              <span className={`text-xs ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{item}</span>
             </div>
           ))}
         </div>

@@ -59,7 +59,7 @@ export const PROFILE_DATA: ProfileData = {
   headline: 'Building Impactful Mobile Experiences.',
   description:
     'I build scalable, high-performance mobile applications that solve real-world problems through thoughtful engineering and exceptional user experiences. Specialized in hardware-integrated apps, camera SDKs, and offline-first mobile systems.',
-  avatarUrl: '/assets/mushtaq.jpg',
+  avatarUrl: '/assets/mushtaq_avatar.jpg',
   resumeUrl: '/assets/resume.pdf',
   contact: {
     email: 'mushtaq11917632@gmail.com',

@@ -33,7 +33,13 @@ export const ControlBar: React.FC = () => {
   };
 
   return (
-    <header className="w-full bg-[#080a12]/95 backdrop-blur-xl border-b border-white/10 px-4 py-2.5 z-40 select-none">
+    <header
+      className={`w-full backdrop-blur-xl border-b px-4 py-2.5 z-40 select-none transition-colors duration-200 ${
+        isDark
+          ? 'bg-[#080a12]/95 border-white/10 text-white'
+          : 'bg-white/95 border-slate-200 text-slate-900'
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
         {/* Left: Branding badge & Available Status */}
         <div className="flex items-center gap-3">
@@ -43,15 +49,15 @@ export const ControlBar: React.FC = () => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-white tracking-tight">
+                <span className={`text-xs font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   Mushtaq Ahmad Mir
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="hidden sm:inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-mono bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   Available for Hire
                 </span>
               </div>
-              <p className="text-[10px] text-purple-300/70 font-mono hidden sm:block">
+              <p className={`text-[10px] font-mono hidden sm:block ${isDark ? 'text-purple-300/70' : 'text-purple-700'}`}>
                 Senior Mobile App Developer (React Native & Flutter)
               </p>
             </div>
@@ -59,14 +65,20 @@ export const ControlBar: React.FC = () => {
         </div>
 
         {/* Center: Device Preview Switcher [ Mobile | Tablet | Desktop ] */}
-        <div className="flex items-center gap-1 bg-black/60 p-1 rounded-xl border border-white/10 shadow-inner">
+        <div
+          className={`flex items-center gap-1 p-1 rounded-xl border shadow-inner transition-colors ${
+            isDark ? 'bg-black/60 border-white/10' : 'bg-slate-100 border-slate-300'
+          }`}
+        >
           <button
             type="button"
             onClick={() => setDeviceMode('mobile')}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
               deviceMode === 'mobile'
                 ? 'bg-purple-600 text-white shadow font-semibold'
-                : 'text-slate-400 hover:text-white'
+                : isDark
+                ? 'text-slate-400 hover:text-white'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
             title="Mobile Phone Frame"
           >
@@ -80,7 +92,9 @@ export const ControlBar: React.FC = () => {
             className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
               deviceMode === 'tablet'
                 ? 'bg-purple-600 text-white shadow font-semibold'
-                : 'text-slate-400 hover:text-white'
+                : isDark
+                ? 'text-slate-400 hover:text-white'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
             title="Tablet Preview"
           >
@@ -94,7 +108,9 @@ export const ControlBar: React.FC = () => {
             className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer ${
               deviceMode === 'desktop'
                 ? 'bg-purple-600 text-white shadow font-semibold'
-                : 'text-slate-400 hover:text-white'
+                : isDark
+                ? 'text-slate-400 hover:text-white'
+                : 'text-slate-600 hover:text-slate-900'
             }`}
             title="Desktop Workspace Window"
           >
@@ -106,14 +122,20 @@ export const ControlBar: React.FC = () => {
         {/* Right: Platform & Theme Controls */}
         <div className="flex items-center gap-2">
           {/* OS Switcher */}
-          <div className="flex items-center bg-black/60 p-0.5 rounded-xl border border-white/10">
+          <div
+            className={`flex items-center p-0.5 rounded-xl border transition-colors ${
+              isDark ? 'bg-black/60 border-white/10' : 'bg-slate-100 border-slate-300'
+            }`}
+          >
             <button
               type="button"
               onClick={() => setPlatform('android')}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
                 platform === 'android'
                   ? 'bg-emerald-600 text-white font-bold shadow'
-                  : 'text-slate-400 hover:text-white'
+                  : isDark
+                  ? 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Android
@@ -124,7 +146,9 @@ export const ControlBar: React.FC = () => {
               className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-all cursor-pointer ${
                 platform === 'ios'
                   ? 'bg-indigo-600 text-white font-bold shadow'
-                  : 'text-slate-400 hover:text-white'
+                  : isDark
+                  ? 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               iOS
@@ -138,7 +162,9 @@ export const ControlBar: React.FC = () => {
             className={`p-1.5 rounded-xl border transition-colors cursor-pointer ${
               soundEnabled
                 ? 'bg-purple-950/60 border-purple-500/40 text-purple-300'
-                : 'bg-black/40 border-white/10 text-slate-500'
+                : isDark
+                ? 'bg-black/40 border-white/10 text-slate-500'
+                : 'bg-slate-100 border-slate-300 text-slate-500'
             }`}
             title={soundEnabled ? 'UI Sound Effects: On' : 'UI Sound Effects: Muted'}
           >
@@ -149,7 +175,11 @@ export const ControlBar: React.FC = () => {
           <button
             type="button"
             onClick={replayLaunch}
-            className="p-1.5 rounded-xl border bg-black/40 border-white/10 text-slate-400 hover:text-purple-300 hover:border-purple-500/40 transition-colors cursor-pointer"
+            className={`p-1.5 rounded-xl border transition-colors cursor-pointer ${
+              isDark
+                ? 'bg-black/40 border-white/10 text-slate-400 hover:text-purple-300 hover:border-purple-500/40'
+                : 'bg-slate-100 border-slate-300 text-slate-600 hover:text-purple-700 hover:border-purple-400'
+            }`}
             title="Replay Splash Screen"
           >
             <RotateCcw className="w-4 h-4" />

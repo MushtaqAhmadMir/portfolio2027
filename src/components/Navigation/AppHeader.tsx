@@ -123,7 +123,7 @@ export const AppHeader: React.FC = () => {
                 </span>
               )}
             </h1>
-            <p className="text-[10px] text-slate-400 truncate leading-tight mt-0.5">{subtitle}</p>
+            <p className={`text-[10px] truncate leading-tight mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600 font-medium'}`}>{subtitle}</p>
           </div>
         </div>
 
@@ -141,7 +141,9 @@ export const AppHeader: React.FC = () => {
               className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-all cursor-pointer ${
                 platform === 'android'
                   ? 'bg-purple-600 text-white shadow-sm font-bold'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : isDark
+                  ? 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               title="Switch to Android Material 3 Design"
             >
@@ -153,7 +155,9 @@ export const AppHeader: React.FC = () => {
               className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-all cursor-pointer ${
                 platform === 'ios'
                   ? 'bg-purple-600 text-white shadow-sm font-bold'
-                  : 'text-slate-400 hover:text-slate-200'
+                  : isDark
+                  ? 'text-slate-400 hover:text-slate-200'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
               title="Switch to iOS Cupertino Design"
             >

@@ -14,6 +14,7 @@ export const DeviceChassis: React.FC<DeviceChassisProps> = ({ children }) => {
     deviceMode,
     platform,
     theme,
+    activeTab,
     setActiveTab,
     togglePlatform,
     toggleTheme,
@@ -21,6 +22,13 @@ export const DeviceChassis: React.FC<DeviceChassisProps> = ({ children }) => {
   } = useApp();
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
+  const mainRef = React.useRef<HTMLElement>(null);
+  const mobileMainRef = React.useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+    mobileMainRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+  }, [activeTab]);
 
   // Detect physical mobile/tablet browser screen size
   useEffect(() => {
@@ -70,7 +78,7 @@ export const DeviceChassis: React.FC<DeviceChassisProps> = ({ children }) => {
       >
         <StatusBar />
         <AppHeader />
-        <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col relative">
+        <main ref={mobileMainRef} className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col relative">
           {children}
         </main>
         <div className="flex-shrink-0 z-30 relative">
@@ -147,7 +155,7 @@ export const DeviceChassis: React.FC<DeviceChassisProps> = ({ children }) => {
           <AppHeader />
 
           {/* Scrollable Content Viewport */}
-          <main className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col relative">
+          <main ref={mainRef} className="flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col relative">
             {children}
           </main>
 

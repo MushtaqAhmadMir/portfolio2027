@@ -74,36 +74,36 @@ export const HomeScreen: React.FC = () => {
           {/* Info & Headline */}
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1">
-              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-1.5">
+              <h2 className={`text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 <span>{PROFILE_DATA.name}</span>
               </h2>
             </div>
 
-            <p className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-purple-400 via-indigo-300 to-purple-200 bg-clip-text text-transparent">
+            <p className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-purple-400' : 'text-purple-700'}`}>
               {PROFILE_DATA.role}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-2 text-xs text-slate-400">
+            <div className={`flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-2 text-xs ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
               <span className="flex items-center gap-1">
-                <Briefcase className="w-3.5 h-3.5 text-purple-400" />
+                <Briefcase className="w-3.5 h-3.5 text-purple-500" />
                 <span>{PROFILE_DATA.experienceYears} Experience</span>
               </span>
               <span className="flex items-center gap-1">
-                <Layers className="w-3.5 h-3.5 text-indigo-400" />
+                <Layers className="w-3.5 h-3.5 text-indigo-500" />
                 <span>{PROFILE_DATA.specialization}</span>
               </span>
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                <MapPin className="w-3.5 h-3.5 text-emerald-500" />
                 <span>India (Open to Remote)</span>
               </span>
             </div>
 
             {/* Headline Banner */}
-            <div className="mt-3.5 pt-3 border-t border-white/10">
-              <h3 className="text-base sm:text-lg font-bold text-slate-100 leading-snug">
+            <div className={`mt-3.5 pt-3 border-t ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
+              <h3 className={`text-base sm:text-lg font-bold leading-snug ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
                 "{PROFILE_DATA.headline}"
               </h3>
-              <p className="text-xs text-slate-300/80 mt-1 leading-relaxed">
+              <p className={`text-xs mt-1 leading-relaxed ${isDark ? 'text-slate-300/80' : 'text-slate-600'}`}>
                 {PROFILE_DATA.description}
               </p>
             </div>
@@ -166,11 +166,11 @@ export const HomeScreen: React.FC = () => {
                 : 'bg-white border-slate-200 hover:border-purple-300'
             }`}
           >
-            <div className="text-lg sm:text-xl font-extrabold bg-gradient-to-r from-purple-400 to-indigo-300 bg-clip-text text-transparent">
+            <div className={`text-lg sm:text-xl font-extrabold ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>
               {stat.value}
             </div>
-            <div className="text-xs font-semibold text-slate-200 mt-0.5">{stat.label}</div>
-            <div className="text-[10px] text-slate-400">{stat.sub}</div>
+            <div className={`text-xs font-semibold mt-0.5 ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>{stat.label}</div>
+            <div className={`text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>
@@ -184,11 +184,11 @@ export const HomeScreen: React.FC = () => {
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <Radio className="w-4 h-4 text-purple-400 animate-pulse" />
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">
+            <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
               Engineering Highlights
             </h4>
           </div>
-          <span className="text-[10px] text-purple-400 font-mono">Production Tested</span>
+          <span className={`text-[10px] font-mono font-medium ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>Production Tested</span>
         </div>
 
         <div className="flex flex-wrap gap-1.5">
@@ -211,11 +211,11 @@ export const HomeScreen: React.FC = () => {
       <div>
         <div className="flex items-center justify-between mb-3 px-1">
           <div>
-            <h3 className="text-sm font-bold text-white flex items-center gap-2">
+            <h3 className={`text-sm font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
               <Zap className="w-4 h-4 text-amber-400" />
               <span>Flagship Projects</span>
             </h3>
-            <p className="text-[11px] text-slate-400">
+            <p className={`text-[11px] ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
               Hardware integrations, 360° cameras, banking & IoT
             </p>
           </div>
@@ -223,7 +223,7 @@ export const HomeScreen: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveTab('projects')}
-            className="flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 font-semibold cursor-pointer"
+            className={`flex items-center gap-1 text-xs font-semibold cursor-pointer ${isDark ? 'text-purple-400 hover:text-purple-300' : 'text-purple-700 hover:text-purple-900'}`}
           >
             <span>View All (8)</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -253,7 +253,7 @@ export const HomeScreen: React.FC = () => {
                   alt={project.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#101422] via-transparent to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
 
                 {/* Platform Badges */}
                 <div className="absolute top-2.5 right-2.5 flex items-center gap-1">
@@ -280,7 +280,7 @@ export const HomeScreen: React.FC = () => {
 
               {/* Card Body */}
               <div className="p-3.5 space-y-2">
-                <p className="text-[11px] text-slate-300 line-clamp-2 leading-relaxed">
+                <p className={`text-[11px] line-clamp-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                   {project.tagline}
                 </p>
 
@@ -288,7 +288,7 @@ export const HomeScreen: React.FC = () => {
                   {project.technologies.slice(0, 3).map((t) => (
                     <span
                       key={t}
-                      className="px-2 py-0.5 rounded-md text-[9.5px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                      className={`px-2 py-0.5 rounded-md text-[9.5px] font-mono border ${isDark ? 'bg-purple-500/10 text-purple-300 border-purple-500/20' : 'bg-purple-50 text-purple-800 border-purple-200'}`}
                     >
                       {t}
                     </span>
@@ -309,21 +309,21 @@ export const HomeScreen: React.FC = () => {
         }`}
       >
         <div className="flex items-start gap-3">
-          <div className="p-2 rounded-xl bg-purple-600/20 border border-purple-500/40 text-purple-400 mt-0.5">
+          <div className="p-2 rounded-xl bg-purple-600/20 border border-purple-500/40 text-purple-500 mt-0.5">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div className="flex-1">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+            <h4 className={`text-xs font-bold uppercase tracking-wider font-mono ${isDark ? 'text-white' : 'text-slate-900'}`}>
               Senior Engineering Philosophy
             </h4>
-            <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+            <p className={`text-xs mt-1 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               "Zero frame-rate drops, crash-proof offline syncing, and clean modular codebases designed to outlive organizational changes."
             </p>
             <div className="mt-3 flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => setActiveTab('about')}
-                className="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1 cursor-pointer"
+                className={`text-xs font-semibold flex items-center gap-1 cursor-pointer ${isDark ? 'text-purple-400 hover:text-purple-300' : 'text-purple-700 hover:text-purple-900'}`}
               >
                 <span>Read Developer Story</span>
                 <ArrowRight className="w-3 h-3" />

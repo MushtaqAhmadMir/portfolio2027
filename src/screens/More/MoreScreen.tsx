@@ -45,11 +45,11 @@ export const MoreScreen: React.FC = () => {
     <div className="flex-1 w-full p-4 sm:p-5 space-y-5 pb-6">
       {/* Header */}
       <div>
-        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+        <h2 className={`text-lg font-bold flex items-center gap-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
           <Menu className="w-4 h-4 text-purple-400" />
           <span>Application Hub & Extended Profile</span>
         </h2>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className={`text-xs mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600 font-medium'}`}>
           Education, credentials, technical articles, and direct engineering contact channels.
         </p>
       </div>
@@ -75,8 +75,8 @@ export const MoreScreen: React.FC = () => {
               <ChevronRight className="w-3 h-3" />
             </span>
           </div>
-          <h3 className="text-sm font-bold text-white">Contact & Hiring</h3>
-          <p className="text-[11px] text-slate-300 mt-0.5">
+          <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Contact & Hiring</h3>
+          <p className={`text-[11px] mt-0.5 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
             Reach out directly for senior roles, contracts, or consultations.
           </p>
         </motion.div>
@@ -100,8 +100,8 @@ export const MoreScreen: React.FC = () => {
               <ChevronRight className="w-3 h-3" />
             </span>
           </div>
-          <h3 className="text-sm font-bold text-white">Curriculum Vitae</h3>
-          <p className="text-[11px] text-slate-300 mt-0.5">
+          <h3 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>Curriculum Vitae</h3>
+          <p className={`text-[11px] mt-0.5 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
             View executive summary and download official resume document.
           </p>
         </motion.div>
@@ -130,17 +130,17 @@ export const MoreScreen: React.FC = () => {
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                 <div>
-                  <h4 className="text-xs font-bold text-white">{edu.degree}</h4>
+                  <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{edu.degree}</h4>
                   <div className="text-[11px] font-semibold text-purple-400">{edu.institution}</div>
                 </div>
-                <div className="text-[10px] font-mono text-slate-400">
+                <div className={`text-[10px] font-mono ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                   {edu.period} • {edu.location}
                 </div>
               </div>
 
               <div className="mt-2 space-y-1">
                 {edu.highlights.map((h, hIdx) => (
-                  <div key={hIdx} className="text-[11px] text-slate-300 flex items-start gap-1.5 leading-relaxed">
+                  <div key={hIdx} className={`text-[11px] flex items-start gap-1.5 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
                     <span className="text-purple-400">•</span>
                     <span>{h}</span>
                   </div>
@@ -173,10 +173,14 @@ export const MoreScreen: React.FC = () => {
               }`}
             >
               <div>
-                <h4 className="text-xs font-bold text-white">{cert.name}</h4>
-                <div className="text-[10px] text-slate-400 mt-0.5">{cert.issuer} ({cert.year})</div>
+                <h4 className={`text-xs font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{cert.name}</h4>
+                <div className={`text-[10px] mt-0.5 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{cert.issuer} ({cert.year})</div>
               </div>
-              <span className="px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-purple-500/15 text-purple-300 border border-purple-500/30 whitespace-nowrap">
+              <span className={`px-2 py-0.5 rounded-full text-[9px] font-mono font-bold whitespace-nowrap border ${
+                isDark
+                  ? 'bg-purple-500/15 text-purple-300 border-purple-500/30'
+                  : 'bg-purple-100 text-purple-800 border-purple-200'
+              }`}>
                 {cert.badge}
               </span>
             </div>
@@ -209,15 +213,15 @@ export const MoreScreen: React.FC = () => {
                   : 'bg-slate-50 border-slate-200 hover:border-purple-300 hover:bg-white'
               }`}
             >
-              <div className="flex items-center justify-between gap-2 text-[10px] font-mono text-slate-400 mb-1">
+              <div className={`flex items-center justify-between gap-2 text-[10px] font-mono mb-1 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 <span>{blog.date} • {blog.readTime}</span>
                 <span className="text-purple-400 flex items-center gap-0.5 font-semibold">
                   <span>Read Article</span>
                   <ChevronRight className="w-3 h-3" />
                 </span>
               </div>
-              <h4 className="text-xs font-bold text-white leading-snug">{blog.title}</h4>
-              <p className="text-[11px] text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+              <h4 className={`text-xs font-bold leading-snug ${isDark ? 'text-white' : 'text-slate-900'}`}>{blog.title}</h4>
+              <p className={`text-[11px] mt-1 line-clamp-2 leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                 {blog.excerpt}
               </p>
             </motion.div>
@@ -232,7 +236,7 @@ export const MoreScreen: React.FC = () => {
         }`}
       >
         <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2 text-slate-300">
+          <div className={`flex items-center gap-2 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
             <GitBranch className="w-4 h-4 text-purple-400" />
             <h3 className="text-xs font-bold uppercase tracking-wider font-mono">
               GitHub Engineering Activity
@@ -252,17 +256,17 @@ export const MoreScreen: React.FC = () => {
 
         {/* Simulated Git Commit Heatmap Bar */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between text-[10px] font-mono text-slate-400">
+          <div className={`flex items-center justify-between text-[10px] font-mono ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
             <span>Recent Commit Intensity</span>
-            <span className="text-emerald-400 font-bold">1,840+ Commits in Last 12 Months</span>
+            <span className="text-emerald-500 font-bold">1,840+ Commits in Last 12 Months</span>
           </div>
 
-          <div className="grid grid-cols-12 sm:grid-cols-24 gap-1 p-3 rounded-xl bg-slate-950/60 border border-white/5">
+          <div className={`grid grid-cols-12 sm:grid-cols-24 gap-1 p-3 rounded-xl border ${isDark ? 'bg-slate-950/60 border-white/5' : 'bg-slate-100 border-slate-200'}`}>
             {Array.from({ length: 48 }).map((_, idx) => {
               const intensity = (idx * 7) % 5;
               const bg =
                 intensity === 0
-                  ? 'bg-slate-800/40'
+                  ? isDark ? 'bg-slate-800/40' : 'bg-slate-200'
                   : intensity === 1
                   ? 'bg-purple-900/50'
                   : intensity === 2
@@ -281,10 +285,10 @@ export const MoreScreen: React.FC = () => {
             })}
           </div>
 
-          <div className="flex items-center justify-between text-[9px] font-mono text-slate-500 pt-1">
+          <div className={`flex items-center justify-between text-[9px] font-mono pt-1 ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
             <span>Less</span>
             <div className="flex items-center gap-1">
-              <div className="w-2.5 h-2.5 rounded-sm bg-slate-800/40" />
+              <div className={`w-2.5 h-2.5 rounded-sm ${isDark ? 'bg-slate-800/40' : 'bg-slate-200'}`} />
               <div className="w-2.5 h-2.5 rounded-sm bg-purple-900/50" />
               <div className="w-2.5 h-2.5 rounded-sm bg-purple-700" />
               <div className="w-2.5 h-2.5 rounded-sm bg-purple-500" />
